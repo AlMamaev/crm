@@ -27,8 +27,7 @@ class Router {
         $params = null;
 
         foreach ($this->routes as $pattern => $route) {
-            $ag=preg_match($pattern, $uri);
-            $matches = ['ksg'];
+            $ag=preg_match($pattern, $uri, $matches);
             //var_dump($ag);
             if ($ag) {
                 //var_dump($pattern, $uri, $matches);
