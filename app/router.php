@@ -30,7 +30,7 @@ class Router {
             $ag=preg_match($pattern, $uri);
             $matches = ['ksg'];
             //var_dump($ag);
-            if ($ag==0) {
+            if ($ag) {
                 //var_dump($pattern, $uri, $matches);
                 $controller = "controllers\\" . $route['controller'];
                 $action = $route['action'] ?? $matches['action'] ?? 'index';
@@ -46,7 +46,7 @@ class Router {
         }
 
         $controllerInstance = new $controller();
-        if (!method_exists($controllerInstance, $action)) {
+        if (method_exists($controllerInstance, $action)) {
             http_response_code(404);
             echo "Action not found!";
             return;
